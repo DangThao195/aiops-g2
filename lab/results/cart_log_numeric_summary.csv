@@ -1,0 +1,4 @@
+field,first_seen,count,min,median,max,max_at,example_message
+cache_size_mb,2026-06-01T00:00:49.291Z,4491,40.0,865.7,1799.9,2026-06-01T16:22:46.123Z,ProductCatalogCache eviction failed: heap pressure too high
+heap_used_mb,2026-06-01T19:59:00.382Z,944,1900.0,1939.0,1980.0,2026-06-01T20:07:46.788Z,OutOfMemoryError imminent: available heap < 5%
+memory_limit_mb,2026-06-01T19:59:02.158Z,819,2048.0,2048.0,2048.0,2026-06-01T19:59:02.158Z,Container OOMKilled: memory limit exceeded

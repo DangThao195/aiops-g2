@@ -1,0 +1,6 @@
+service,metric,first_anomaly_timestamp,score,value,detector
+cart-service,memory_pct,2026-06-01T18:04:30Z,0.0175,49.171,isolation_forest
+cart-service,jvm_gc_pause_ms_avg,2026-06-01T18:04:30Z,0.0175,161.1,isolation_forest
+cart-service,http_p99_latency_ms,2026-06-01T18:04:30Z,0.0175,361.1,isolation_forest
+cart-service,http_5xx_rate,2026-06-01T18:04:30Z,0.0175,2.0,isolation_forest
+cart-service,restart_delta,2026-06-01T18:04:30Z,0.0175,0.0,isolation_forest

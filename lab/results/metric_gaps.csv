@@ -1,0 +1,6 @@
+service,gap_start_after,next_timestamp,missing_30s_points
+cart-service,2026-06-01T11:29:30Z,2026-06-01T12:00:00Z,60
+order-service,2026-06-01T11:29:30Z,2026-06-01T12:00:00Z,60
+payment-service,2026-06-01T11:29:30Z,2026-06-01T12:00:00Z,60
+api-gateway,2026-06-01T11:29:30Z,2026-06-01T12:00:00Z,60
+product-service,2026-06-01T11:29:30Z,2026-06-01T12:00:00Z,60

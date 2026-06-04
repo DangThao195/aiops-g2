@@ -1,0 +1,33 @@
+service,template,first_seen,first_spike,spike_count_30m,spike_score,total_count,levels
+cart-service,Health check passed,2026-06-01T00:00:38.490Z,,,,3213,INFO:3213
+cart-service,Item added to cart for <*>,2026-06-01T00:00:20.178Z,,,,3085,INFO:3085
+cart-service,DB query executed table=cart <*>,2026-06-01T00:00:38.378Z,,,,2820,INFO:2820
+cart-service,ProductCatalogCache eviction failed: heap pressure too high,2026-06-01T06:32:33.431Z,2026-06-01T14:00:00Z,136,87.009,2655,WARN:2655
+cart-service,GC overhead limit warning: <*> <*>,2026-06-01T06:31:11.234Z,2026-06-01T14:00:00Z,101,55.983,2116,WARN:2116
+cart-service,Checkout completed <*>,2026-06-01T00:01:20.752Z,,,,2020,INFO:2020
+cart-service,ProductCatalogCache loaded <*> entries,2026-06-01T00:01:15.559Z,,,,1835,INFO:1835
+cart-service,Slow response detected endpoint=/api/cart <*>,2026-06-01T06:41:41.658Z,2026-06-01T14:00:00Z,82,24.619,1609,WARN:1609
+cart-service,Connection pool nearing limit pool=db <*>,2026-06-01T00:02:11.801Z,2026-06-01T06:30:00Z,38,6.295,1172,WARN:1172
+cart-service,OutOfMemoryError imminent: available heap < 5%,2026-06-01T19:59:00.382Z,,,,944,ERROR:944
+cart-service,Container OOMKilled: memory limit exceeded,2026-06-01T19:59:02.158Z,,,,819,FATAL:819
+cart-service,Cache warm-up slower than expected <*>,2026-06-01T00:15:34.646Z,,,,709,WARN:709
+cart-service,Health check response time elevated endpoint=/health <*>,2026-06-01T00:04:16.135Z,,,,654,WARN:654
+cart-service,Upstream connection refused host=product-service,2026-06-01T19:59:02.204Z,,,,514,ERROR:514
+cart-service,Application starting up version=2.4.1,2026-06-01T19:59:09.022Z,,,,101,INFO:101
+cart-service,Item added to cart for userId=97782,2026-06-01T00:00:03.001Z,,,,1,INFO:1
+cart-service,DB query executed table=cart rows=474,2026-06-01T00:00:24.064Z,,,,1,INFO:1
+cart-service,Checkout completed orderId=ORD-67284058,2026-06-01T00:00:30.800Z,,,,1,INFO:1
+cart-service,ProductCatalogCache loaded 8791 entries,2026-06-01T00:00:49.291Z,,,,1,INFO:1
+cart-service,Connection pool nearing limit pool=db connections=44/50,2026-06-01T00:01:00.561Z,,,,1,WARN:1
+cart-service,Health check response time elevated endpoint=/health latency=136ms,2026-06-01T00:03:01.391Z,,,,1,WARN:1
+cart-service,Cache warm-up slower than expected startup_ms=2885,2026-06-01T00:03:13.737Z,,,,1,WARN:1
+cart-service,GC overhead limit warning: pause=384ms heap=88%,2026-06-01T06:30:19.395Z,,,,1,WARN:1
+cart-service,Slow response detected endpoint=/api/cart latency=2961ms,2026-06-01T06:33:37.026Z,,,,1,WARN:1
+order-service,Cart service call succeeded,2026-06-01T00:00:50.424Z,,,,2421,INFO:2421
+order-service,Order created <*> <*>,2026-06-01T00:00:24.285Z,,,,2181,INFO:2181
+order-service,Health check passed,2026-06-01T00:00:28.691Z,,,,1798,INFO:1798
+order-service,Cart service timeout after <*>,2026-06-01T00:04:18.588Z,2026-06-01T20:30:00Z,100,62.053,1017,WARN:1017
+order-service,Cart service returned 5xx <*>,2026-06-01T20:31:14.264Z,,,,437,ERROR:437
+order-service,Order created orderId=ORD-73632836 userId=55089,2026-06-01T00:00:05.762Z,,,,1,INFO:1
+order-service,Cart service timeout after 2406ms,2026-06-01T00:02:17.747Z,,,,1,WARN:1
+order-service,Cart service returned 5xx status=502,2026-06-01T20:30:52.086Z,,,,1,ERROR:1

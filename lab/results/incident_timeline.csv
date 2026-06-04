@@ -1,0 +1,13 @@
+timestamp,service,evidence
+2026-06-01T03:03:00Z,product-service,Product p99 latency sustained >100ms
+2026-06-01T03:17:00Z,product-service,Product 5xx sustained >5%
+2026-06-01T06:32:33.431Z,cart-service,ProductCatalogCache eviction failures first appear
+2026-06-01T14:00:00Z,cart-service,Cache eviction failures become high-volume
+2026-06-01T18:06:00Z,cart-service,GC pause sustained >100ms
+2026-06-01T19:37:00Z,cart-service,Memory sustained >70% of limit
+2026-06-01T19:59:00.382Z,cart-service,OutOfMemoryError imminent
+2026-06-01T19:59:02.158Z,cart-service,Container OOMKilled
+2026-06-01T20:00:00Z,cart-service,First container restart recorded
+2026-06-01T21:02:00Z,api-gateway,Cart upstream error rate sustained >5%
+2026-06-01T21:52:00Z,order-service,Order upstream timeout rate sustained >10%
+2026-06-01T22:37:30Z,payment-service,Payment upstream timeout rate sustained >10%

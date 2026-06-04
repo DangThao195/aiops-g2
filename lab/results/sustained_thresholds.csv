@@ -1,0 +1,10 @@
+service,metric,threshold,first_sustained_timestamp,value
+cart-service,jvm_gc_pause_ms_avg,100,2026-06-01T18:06:00Z,107.3
+cart-service,memory_pct,70,2026-06-01T19:37:00Z,70.158
+cart-service,http_5xx_rate,5,2026-06-01T21:26:30Z,6.82
+api-gateway,cart_upstream_error_rate,5,2026-06-01T21:02:00Z,6.09
+order-service,upstream_timeout_rate,10,2026-06-01T21:52:00Z,11.23
+payment-service,upstream_timeout_rate,10,2026-06-01T22:37:30Z,10.98
+product-service,http_p99_latency_ms,100,2026-06-01T03:03:00Z,146.4
+product-service,http_5xx_rate,5,2026-06-01T03:17:00Z,6.86
+product-service,cpu_usage_percent,60,2026-06-01T03:41:00Z,71.15
