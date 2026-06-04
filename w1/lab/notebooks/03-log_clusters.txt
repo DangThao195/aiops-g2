@@ -1,0 +1,14 @@
+Total lines: 24275
+Total error lines: 2277
+
+--- TOP LOG TEMPLATES ---
+Cluster ID 4 | Size: 3213 | Template: Health check passed
+Cluster ID 1 | Size: 3086 | Template: Item added to cart for <*>
+Cluster ID 2 | Size: 2821 | Template: DB query executed table=cart <*>
+Cluster ID 10 | Size: 2655 | Template: ProductCatalogCache eviction failed: heap pressure too high
+Cluster ID 9 | Size: 2117 | Template: GC overhead limit warning: <*> <*>
+Cluster ID 3 | Size: 2021 | Template: Checkout completed <*>
+Cluster ID 5 | Size: 1836 | Template: ProductCatalogCache loaded <*> entries
+Cluster ID 11 | Size: 1610 | Template: Slow response detected endpoint=/api/cart <*>
+Cluster ID 6 | Size: 1173 | Template: Connection pool nearing limit pool=db <*>
+Cluster ID 12 | Size: 944 | Template: OutOfMemoryError imminent: available heap < 5%

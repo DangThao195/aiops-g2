@@ -1,0 +1,22 @@
+=== LOG & METRIC EVENT FUSION TIMELINE ===
+
+| Service | Log Event (First Seen) | Timestamp | Description |
+|---------|-----------------------|-----------|-------------|
+| cart | Cache Eviction Failed | 2026-06-01T06:32:33.431Z | ProductCatalogCache eviction failed: heap pressure too high |
+| cart | GC Overhead Limit | 2026-06-01T06:30:19.395Z | GC overhead limit warning: pause=384ms heap=88% |
+| cart | OutOfMemoryError | 2026-06-01T19:59:00.382Z | OutOfMemoryError imminent: available heap < 5% |
+| order | Upstream Timeout | 2026-06-01T00:02:17.747Z | Cart service timeout after 2406ms |
+
+
+=== TOP 5 CART TEMPLATES ===
+Size: 3213 | Health check passed
+Size: 3086 | Item added to cart for <*>
+Size: 2821 | DB query executed table=cart <*>
+Size: 2655 | ProductCatalogCache eviction failed: heap pressure too high
+Size: 2117 | GC overhead limit warning: <*> <*>
+
+=== TOP 5 ORDER TEMPLATES ===
+Size: 2421 | Cart service call succeeded
+Size: 2182 | Order created <*> <*>
+Size: 1798 | Health check passed
+Size: 1456 | Cart service <*> <*> <*>
