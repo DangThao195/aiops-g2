@@ -1,0 +1,27 @@
+# Python Environment
+.venv/
+venv/
+.env
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Data & Large Files
+# Cho phép lưu data folder nhưng bỏ qua các file csv/json nặng bên trong
+# *.csv
+# *.json
+data/
+
+# Models
+# Nếu bạn muốn lưu model .pkl nhỏ trên git thì KHÔNG thêm dòng dưới đây.
+# Nếu model nặng >10MB, hãy thêm:
+# *.pkl
+# *.joblib
+
+# OS Specific
+.DS_Store
+Thumbs.db
+desktop.ini
