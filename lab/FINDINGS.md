@@ -25,11 +25,42 @@ Metrics được phân tích trước để xác định **WHEN** và **WHERE**.
 
 Hướng phân tích:
 
-- Dùng Rolling Z-score để phát hiện điểm lệch khỏi baseline gần.
-- Dùng Isolation Forest để phát hiện bất thường đa biến trên `cart-service`.
-- Dùng sustained threshold để xác nhận các tín hiệu có ý nghĩa vận hành, tránh kết luận từ outlier đơn lẻ.
+- Dùng `metric_detector_map` để chọn detector theo loại metric, không chọn ngưỡng thủ công theo incident.
+- Dùng Baseline IQR và EWMA làm metric detector chính vì hai cách này tự suy ra baseline từ dữ liệu.
+- Dùng counter delta cho các metric dạng counter như `container_restart_count`.
+- Dùng Isolation Forest như detector bổ trợ đa biến, không dùng làm detector chính duy nhất.
+- Dùng sustained threshold như operational confirmation/severity rule, không phải detector chính.
 
-Các mốc metrics quan trọng:
+Detector registry:
+
+| Metric | Detector |
+|---|---|
+| `cpu_usage_percent` | Baseline IQR, EWMA |
+| `memory_pct` | Baseline IQR, EWMA |
+| `jvm_gc_pause_ms_avg` | Baseline IQR, EWMA |
+| `http_p99_latency_ms` | Baseline IQR, EWMA, Rolling IQR |
+| `http_5xx_rate` | Baseline IQR, Rolling IQR |
+| `upstream_timeout_rate` | Baseline IQR, Rolling IQR |
+| `cart_upstream_error_rate` | Baseline IQR, Rolling IQR |
+| `container_restart_count` | Counter delta |
+
+Với cách này, fixed threshold không còn là phương pháp detect chính. Threshold chỉ được dùng để diễn giải mức độ nghiêm trọng theo vận hành.
+
+Các mốc metric anomaly từ detector registry:
+
+| Service | Metric | Detector | First anomaly |
+|---|---|---|---:|
+| product-service | `http_p99_latency_ms` | Rolling IQR | `2026-06-01T03:04:00Z` |
+| product-service | `http_5xx_rate` | Rolling IQR | `2026-06-01T03:17:00Z` |
+| cart-service | `http_p99_latency_ms` | Baseline IQR | `2026-06-01T15:19:30Z` |
+| cart-service | `memory_pct` | Baseline IQR | `2026-06-01T16:39:30Z` |
+| cart-service | `jvm_gc_pause_ms_avg` | Baseline IQR | `2026-06-01T18:48:00Z` |
+| cart-service | `restart_delta` | Counter delta | `2026-06-01T20:00:00Z` |
+| api-gateway | `cart_upstream_error_rate` | Baseline IQR / Rolling IQR | `2026-06-01T20:19:30Z` |
+| order-service | `upstream_timeout_rate` | Baseline IQR | `2026-06-01T20:49:00Z` |
+| payment-service | `upstream_timeout_rate` | Baseline IQR | `2026-06-01T21:02:00Z` |
+
+Các mốc sustained threshold dùng để xác nhận vận hành:
 
 | Service | Metric | Mốc bất thường đầu tiên | Điều kiện |
 |---|---|---:|---:|
@@ -172,6 +203,7 @@ Các output được sinh ra:
 - `lab/results/metric_summary.csv`
 - `lab/results/metric_gaps.csv`
 - `lab/results/rolling_z_anomalies.csv`
+- `lab/results/metric_anomaly_signals.csv`
 - `lab/results/isolation_forest_cart_anomalies.csv`
 - `lab/results/sustained_thresholds.csv`
 - `lab/results/drain3_template_spikes.csv`

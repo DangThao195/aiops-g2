@@ -1,0 +1,25 @@
+timestamp,service,source,metric,metric_family,detector,score,value,severity,evidence
+2026-06-01T03:04:00Z,product-service,metric,http_p99_latency_ms,latency,rolling_iqr,3.762,171.9,warning,http_p99_latency_ms is above rolling IQR upper band for 3 consecutive points
+2026-06-01T03:05:30Z,api-gateway,metric,product_upstream_error_rate,availability,rolling_iqr,4.0,1.06,warning,product_upstream_error_rate is above rolling IQR upper band for 3 consecutive points
+2026-06-01T03:17:00Z,product-service,metric,http_5xx_rate,availability,rolling_iqr,3.573,6.86,warning,http_5xx_rate is above rolling IQR upper band for 3 consecutive points
+2026-06-01T15:19:30Z,cart-service,metric,http_p99_latency_ms,latency,baseline_iqr,3.291,177.3,warning,http_p99_latency_ms is above 6h baseline IQR upper band for 3 consecutive points
+2026-06-01T16:39:30Z,cart-service,metric,memory_pct,resource,baseline_iqr,3.345,34.47,warning,memory_pct is above 6h baseline IQR upper band for 3 consecutive points
+2026-06-01T18:48:00Z,cart-service,metric,jvm_gc_pause_ms_avg,resource,baseline_iqr,3.066,134.9,warning,jvm_gc_pause_ms_avg is above 6h baseline IQR upper band for 3 consecutive points
+2026-06-01T19:58:30Z,cart-service,metric,http_p99_latency_ms,latency,ewma_residual,37.458,2362.3,warning,http_p99_latency_ms is above EWMA baseline for 3 consecutive points
+2026-06-01T19:58:30Z,cart-service,metric,http_p99_latency_ms,latency,rolling_iqr,35.532,2362.3,warning,http_p99_latency_ms is above rolling IQR upper band for 3 consecutive points
+2026-06-01T20:00:00Z,cart-service,metric,restart_delta,resource,counter_delta,1.0,1.0,critical,restart_delta increased
+2026-06-01T20:19:30Z,api-gateway,metric,cart_upstream_error_rate,availability,baseline_iqr,6.098,3.09,warning,cart_upstream_error_rate is above 6h baseline IQR upper band for 3 consecutive points
+2026-06-01T20:19:30Z,api-gateway,metric,cart_upstream_error_rate,availability,rolling_iqr,4.519,3.09,warning,cart_upstream_error_rate is above rolling IQR upper band for 3 consecutive points
+2026-06-01T20:24:30Z,api-gateway,metric,http_5xx_rate,availability,baseline_iqr,3.712,2.78,warning,http_5xx_rate is above 6h baseline IQR upper band for 3 consecutive points
+2026-06-01T20:35:00Z,cart-service,metric,cpu_usage_percent,resource,baseline_iqr,3.039,57.82,warning,cpu_usage_percent is above 6h baseline IQR upper band for 3 consecutive points
+2026-06-01T20:35:00Z,order-service,metric,http_5xx_rate,availability,baseline_iqr,5.432,2.61,warning,http_5xx_rate is above 6h baseline IQR upper band for 3 consecutive points
+2026-06-01T20:35:00Z,order-service,metric,http_5xx_rate,availability,rolling_iqr,5.417,2.61,warning,http_5xx_rate is above rolling IQR upper band for 3 consecutive points
+2026-06-01T20:49:00Z,order-service,metric,upstream_timeout_rate,availability,baseline_iqr,3.8,2.66,warning,upstream_timeout_rate is above 6h baseline IQR upper band for 3 consecutive points
+2026-06-01T20:55:00Z,payment-service,metric,http_5xx_rate,availability,baseline_iqr,4.039,1.08,warning,http_5xx_rate is above 6h baseline IQR upper band for 3 consecutive points
+2026-06-01T20:55:00Z,payment-service,metric,http_5xx_rate,availability,rolling_iqr,3.524,1.08,warning,http_5xx_rate is above rolling IQR upper band for 3 consecutive points
+2026-06-01T20:56:00Z,cart-service,metric,http_5xx_rate,availability,baseline_iqr,3.31,5.14,warning,http_5xx_rate is above 6h baseline IQR upper band for 3 consecutive points
+2026-06-01T21:02:00Z,payment-service,metric,upstream_timeout_rate,availability,baseline_iqr,3.792,1.28,warning,upstream_timeout_rate is above 6h baseline IQR upper band for 3 consecutive points
+2026-06-01T21:05:00Z,payment-service,metric,upstream_timeout_rate,availability,rolling_iqr,5.912,2.49,warning,upstream_timeout_rate is above rolling IQR upper band for 3 consecutive points
+2026-06-01T21:31:30Z,order-service,metric,http_p99_latency_ms,latency,baseline_iqr,4.949,187.4,warning,http_p99_latency_ms is above 6h baseline IQR upper band for 3 consecutive points
+2026-06-01T23:04:00Z,payment-service,metric,http_p99_latency_ms,latency,baseline_iqr,3.359,163.9,warning,http_p99_latency_ms is above 6h baseline IQR upper band for 3 consecutive points
+2026-06-01T23:06:30Z,api-gateway,metric,http_p99_latency_ms,latency,baseline_iqr,3.159,91.1,warning,http_p99_latency_ms is above 6h baseline IQR upper band for 3 consecutive points
