@@ -182,11 +182,66 @@ def save_incident_pipeline():
     plt.close(fig)
 
 
+def save_cart_prometheus_mvp():
+    fig, ax = plt.subplots(figsize=(15, 8.5))
+    ax.set_xlim(0, 15)
+    ax.set_ylim(0, 8)
+    ax.axis("off")
+
+    box(ax, 0.5, 5.8, 2.3, 0.9, "Selected service\ncart-service", fc="#fee2e2", fs=10)
+    box(ax, 0.5, 3.7, 2.3, 0.9, "Supporting logs\ncart-service.log", fc="#f8fafc", fs=10)
+    box(ax, 0.5, 1.6, 2.3, 0.9, "Supporting events\nOOMKilled / restart", fc="#f8fafc", fs=10)
+
+    box(ax, 3.6, 5.8, 2.3, 0.9, "Chosen core tool\nPrometheus", fc="#dcfce7", fs=10)
+    box(ax, 3.6, 3.7, 2.3, 0.9, "Loki + Drain3\nlog template spike", fc="#fef9c3", fs=9)
+    box(ax, 3.6, 1.6, 2.3, 0.9, "K8s Event Exporter\nrestart/OOM signal", fc="#fef9c3", fs=9)
+
+    box(ax, 6.8, 5.8, 2.4, 0.9, "Metric detectors\nBaseline IQR / EWMA\nCounter delta", fc="#e0f2fe", fs=9)
+    box(ax, 6.8, 3.7, 2.4, 0.9, "Evidence normalizer\nservice + timestamp", fc="#e0f2fe", fs=9)
+    box(ax, 6.8, 1.6, 2.4, 0.9, "Severity confirmer\nOOM + restart", fc="#e0f2fe", fs=9)
+
+    box(ax, 10.2, 4.6, 2.1, 0.9, "Correlation window\nsame service + time", fc="#ede9fe", fs=9)
+    box(ax, 12.9, 4.6, 1.6, 0.9, "Incident\ncandidate", fc="#ffedd5", fs=9)
+
+    box(ax, 10.2, 2.5, 4.3, 0.9, "Root cause hypothesis\ncart-service memory pressure from ProductCatalogCache", fc="#fee2e2", fs=9)
+
+    arrow(ax, 2.8, 6.25, 3.6, 6.25)
+    arrow(ax, 5.9, 6.25, 6.8, 6.25)
+    arrow(ax, 9.2, 6.25, 10.2, 5.05)
+    arrow(ax, 12.3, 5.05, 12.9, 5.05)
+
+    arrow(ax, 2.8, 4.15, 3.6, 4.15)
+    arrow(ax, 5.9, 4.15, 6.8, 4.15)
+    arrow(ax, 9.2, 4.15, 10.2, 4.95)
+
+    arrow(ax, 2.8, 2.05, 3.6, 2.05)
+    arrow(ax, 5.9, 2.05, 6.8, 2.05)
+    arrow(ax, 9.2, 2.05, 10.2, 2.95)
+    arrow(ax, 11.25, 4.6, 11.25, 3.4)
+
+    timeline = [
+        ("16:39Z\nmemory drift", 4.2),
+        ("18:xxZ\nGC pressure", 6.25),
+        ("19:59Z\nOOMKilled", 8.3),
+        ("20:00Z\nrestart", 10.35),
+    ]
+    ax.text(0.8, 1.02, "Evidence timeline for cart-service", fontsize=9, weight="bold", color="#334155")
+    for idx, (text, x) in enumerate(timeline):
+        box(ax, x, 0.75, 1.45, 0.55, text, fc="#ffffff", fs=7.5)
+        if idx < len(timeline) - 1:
+            arrow(ax, x + 1.45, 1.025, timeline[idx + 1][1], 1.025)
+    ax.set_title("MVP Tool Choice: Prometheus for cart-service Incident Detection", fontsize=15, weight="bold")
+    fig.tight_layout()
+    fig.savefig(OUT / "mvp_prometheus_cart_service_pipeline.png", dpi=170)
+    plt.close(fig)
+
+
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     save_architecture_overview()
     save_dependency_graph()
     save_incident_pipeline()
+    save_cart_prometheus_mvp()
     print(f"Diagrams written to {OUT}")
 
 

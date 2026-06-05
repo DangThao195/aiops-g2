@@ -15,6 +15,54 @@ Thiết kế này biến bài phân tích incident hiện tại thành một pip
 
 ![AIOps architecture overview](diagrams/aiops_architecture_overview.png)
 
+## MVP Tool Choice: Prometheus cho cart-service
+
+Trong phần defend, nên chọn một hướng MVP cụ thể thay vì trình bày quá nhiều tool ngang nhau.
+
+**Tool chính được chọn:** `Prometheus`
+
+**Service dùng để defend:** `cart-service`
+
+![MVP Prometheus cart-service pipeline](diagrams/mvp_prometheus_cart_service_pipeline.png)
+
+Lý do chọn `Prometheus` làm tool chính:
+
+- Incident hiện tại có tín hiệu định lượng rất rõ trên metrics: memory tăng, GC pause tăng, latency tăng, restart count tăng.
+- Prometheus phù hợp với Kubernetes và có thể scrape metrics mỗi 30 giây, giống sampling interval của dataset.
+- PromQL đủ để query các window gần nhất, ví dụ 5 phút, 30 phút, 2 giờ.
+- Chi phí vận hành thấp hơn so với dựng full streaming pipeline bằng Kafka/Redpanda ngay từ đầu.
+- Phù hợp để tự động trả lời `WHEN` và `WHERE`.
+
+Trong MVP này, `Prometheus` là core detection tool. Các tool khác chỉ là evidence bổ trợ:
+
+| Tool | Vai trò trong MVP |
+|---|---|
+| Prometheus | Detect anomaly chính cho `cart-service` metrics |
+| Loki + Drain3 | Giải thích log pattern nào spike sau khi Prometheus khoanh vùng |
+| Kubernetes Event Exporter | Xác nhận OOMKilled/restart là event hạ tầng thật |
+| Postgres | Lưu anomaly signal, incident candidate, evidence timeline |
+| Grafana/Alertmanager | Hiển thị dashboard và gửi alert |
+
+Luồng defend cho `cart-service`:
+
+```text
+Prometheus scrape cart-service metrics
+→ metric detector phát hiện memory/GC/latency bất thường
+→ correlation engine chọn cart-service là incident candidate
+→ Loki/Drain3 kiểm tra log quanh timestamp đó
+→ Kubernetes Event Exporter xác nhận OOMKilled/restart
+→ tạo root cause hypothesis: ProductCatalogCache gây memory pressure/OOM
+```
+
+Điểm cần nói rõ khi defend:
+
+```text
+Prometheus không tự chứng minh root cause một mình.
+Prometheus giúp tự động phát hiện WHEN/WHERE.
+Root cause cần log/event/trace để giải thích WHAT/WHY.
+Vì vậy MVP chọn Prometheus làm detector chính, nhưng vẫn giữ Loki và K8s events làm evidence layer.
+```
+
 Luồng tổng quan:
 
 ```text
